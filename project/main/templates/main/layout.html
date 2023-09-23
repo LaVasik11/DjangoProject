@@ -14,30 +14,34 @@
 
 </head>
 <body>
-    <aside>
+    <div class="sidebar-container">
+        <aside>
 
-        <!-- <span class="logo">---</span> -->
-        <h3>Навигация</h3>
-        <ul>
-            <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i>Главная</li></a>
-            <a href="{% url 'about' %}"><li><i class="fa-solid fa-user"></i>Про нас</li></a>
-            <a href="{% url 'news_home' %}"><li><i class="fa-regular fa-newspaper"></i>Новости</li></a>
-            <a href="{% url 'contacts' %}"><li><i class="fa-solid fa-paper-plane"></i>Контакты</li></a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle">Добавить статью</i></button></li></a>
-            {% endif %}
+            <!-- <span class="logo">---</span> -->
+            <h3>Навигация</h3>
+            <ul>
+                <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i>Главная</li></a>
+                <a href="{% url 'about' %}"><li><i class="fa-solid fa-user"></i>Про нас</li></a>
+                <a href="{% url 'news_home' %}"><li><i class="fa-regular fa-newspaper"></i>Новости</li></a>
+                <a href="{% url 'contacts' %}"><li><i class="fa-solid fa-paper-plane"></i>Контакты</li></a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle">Добавить статью</i></button></li></a>
+                {% endif %}
 
-            {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}" class="logout">Выйти из аккаунта</a>
-            {% else %}
-                <a href="{% url 'login' %}" class="login">Войти в аккаунт</a>
-                <a href="{% url 'register' %}" class="register">Зарегистрироваться</a>
-            {% endif %}
-        </ul>
-    </aside>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="logout"><button class="btn btn-warning">Выйти из аккаунта</button></a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="login"><button class="btn btn-success">Войти в аккаунт</button></a>
+                    <a href="{% url 'register' %}" class="register"><button class="btn btn-info">Зарегистрироваться</button></a>
+                {% endif %}
+            </ul>
+        </aside>
+    </div>
     <main>
-        {% block content %}
-        {% endblock %}
+        <div class="content-container">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
 
 </body>

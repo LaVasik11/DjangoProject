@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Articles
 from .forms import ArticlesForm
 from django.views.generic import DetailView, UpdateView, DeleteView
+from django.utils import timezone
 
 
 def news_home(request):
@@ -32,12 +33,14 @@ def create(request):
     if request.method == 'POST':
         form = ArticlesForm(request.POST)
         if form.is_valid():
-            form.save()
+            article = form.save(commit=False)
+            article.date = timezone.now()
+            article.save()
             return redirect('news_home')
         else:
             error = 'Форма была неверной'
-
-    form = ArticlesForm()
+    else:
+        form = ArticlesForm(initial={'date': timezone.now()})
 
     data = {
         'form': form,
