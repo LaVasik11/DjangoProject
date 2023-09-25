@@ -11,8 +11,8 @@
                 {{ form.title }}<br>
                 {{ form.anons }}<br>
                 {{ form.full_text }}<br>
-                <input type="datetime-local" name="date" value="{{ timezone.now|date:'Y-m-d\TH:i' }}" class="date-input"><br>
                 <span>{{ error }}</span>
+                <input type="hidden" name="author" value="{{ user.id }}">
                 <button class="btn btn-success" style="margin-top: 10px;" type="submit">Добавить статью</button>
             </form>
         </div>

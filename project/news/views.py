@@ -19,8 +19,9 @@ class NewsDetailView(DetailView):
 class NewsUpdateView(UpdateView):
     model = Articles
     template_name = 'news/news-update.html'
-
     form_class = ArticlesForm
+
+
 
 class NewsDeleteView(DeleteView):
     model = Articles
@@ -33,8 +34,11 @@ def create(request):
     if request.method == 'POST':
         form = ArticlesForm(request.POST)
         if form.is_valid():
-            article = form.save(commit=False)
-            article.date = timezone.now()
+            author_id = form.cleaned_data['author']
+            article = Articles(title=form.cleaned_data['title'],
+                               anons=form.cleaned_data['anons'],
+                               full_text=form.cleaned_data['full_text'],
+                               author=request.user)
             article.save()
             return redirect('news_home')
         else:
