@@ -5,7 +5,7 @@
 {% block content %}
     <div class="features">
         <h1>Редактирование статьи</h1>
-        <form method="post">
+        <form method="post" class="form-block">
             {% csrf_token %}<br>
             {{ form.title }}<br>
             {{ form.anons }}<br>

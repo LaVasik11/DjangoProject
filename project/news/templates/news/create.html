@@ -5,8 +5,8 @@
 {% block content %}
     {% if user.is_authenticated %}
         <div class="features">
-            <h1>Форма по добавлению статьи</h1>
-            <form method="post">
+            <h1 class="page-title">Создание статьи</h1>
+            <form method="post" class="form-block">
                 {% csrf_token %}<br>
                 {{ form.title }}<br>
                 {{ form.anons }}<br>

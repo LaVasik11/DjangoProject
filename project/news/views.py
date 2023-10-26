@@ -3,7 +3,7 @@ from .models import Articles
 from .forms import ArticlesForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.utils import timezone
-
+from django.shortcuts import get_object_or_404
 
 def news_home(request):
     news = Articles.objects.order_by('-date')
@@ -27,6 +27,13 @@ class NewsDeleteView(DeleteView):
     model = Articles
     success_url = '/news/'
     template_name = 'news/news-delete.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        article = get_object_or_404(Articles, pk=self.kwargs['pk'])
+        context['article'] = article
+        return context
 
 
 def create(request):

@@ -5,11 +5,12 @@
 {% block content %}
     <div class="features">
         <h1>Удаление статьи</h1>
-        <form method="post">
+        <form method="post" class="form-block">
             {% csrf_token %}<br>
             <p>Вы действительно хотите удалить статью?</p>
 
-            <button class="btn btn-success" type="submit">Удалить статью</button>
+            <button class="btn btn-danger" type="submit">Удалить статью</button>
+            <a href="{% url 'news-detail' article.id %}" class="btn btn-secondary">Отмена</a>
         </form>
     </div>
 {% endblock %}

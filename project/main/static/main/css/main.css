@@ -163,3 +163,25 @@ form {
   transition: transform 0.2s ease-in-out;
   margin-top: 20px;
 }
+
+.nickname {
+    text-decoration: underline;
+}
+
+.btn-success {
+        width: 200px;
+}
+
+.separator {
+    height: 2px;
+    background-color: #fff;
+    margin: 20px 0;
+}
+
+.form-block {
+        margin-left: 300px;
+}
+
+confirm_deletion {
+        margin-left: 200px;
+}
