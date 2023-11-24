@@ -29,3 +29,7 @@ class Register(View):
             'form': form
         }
         return render(request, self.template_name, context)
+
+
+def profile_user(request, username):
+    return render(request, 'users/profile_user.html')

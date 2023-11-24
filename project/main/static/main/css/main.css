@@ -185,3 +185,19 @@ form {
 confirm_deletion {
         margin-left: 200px;
 }
+
+.profile-link {
+    text-decoration: none;
+    color: #4285f4;
+}
+
+
+.profile-link p.nickname b {
+    font-weight: bold;
+    color: #ff6600;
+}
+
+
+.profile-link:hover {
+    color: #ff6600;
+}

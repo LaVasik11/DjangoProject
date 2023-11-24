@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль {{ user }}</title>
+    <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+</head>
+<body>
+
+<div class="profile-container">
+    <div class="button-container">
+        <button class="button" onclick="goBack()">Назад</button>
+    </div>
+
+    <h1>{{ user }}</h1>
+
+    <div class="articles-container">
+        <div class="articles-info">
+            <div class="profile-info">
+                <h2>Ваши статьи:</h2>
+                <ul class="articles-list">
+                    <li>Статья 1</li>
+                    <li>Статья 2</li>
+                    <li>Статья 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="articles-info">
+            <div class="profile-info">
+                <h2>понравившиеся статьи:</h2>
+                <ul class="articles-list">
+                    <li>Статья A</li>
+                    <li>Статья B</li>
+                    <li>Статья C</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
