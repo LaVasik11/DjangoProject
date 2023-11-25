@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="features">
-        <p>Автор: {{ user }}</p>
+        <p>Автор: {{ article.author }}</p>
         <h1>{{ article.title }}</h1>
         <p>{{ article.date }}</p>
         <p>{{ article.full_text }}</p>
@@ -14,6 +14,18 @@
                 <a href="{% url 'news-delete' article.id %}" class="btn btn-danger">Удалить</a>
                 <a href="{% url 'news-update' article.id %}" class="btn btn-primary">Редактировать</a>
             {% endif %}
+            <form method="post" action="{% url 'news-detail' article.id %}" style="display:inline;">
+                {% csrf_token %}
+                {{ like_form }}
+                <button class="red-button" type="submit">
+                    {% if liked %}
+                        <i class="fa-solid fa-heart"></i>
+                    {% else %}
+                        <i class="fa-regular fa-heart"></i>
+                    {% endif %}
+                </button>
+            </form>
         {% endif %}
     </div>
 {% endblock %}
+

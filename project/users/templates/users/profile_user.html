@@ -19,22 +19,30 @@
     <div class="articles-container">
         <div class="articles-info">
             <div class="profile-info">
-                <h2>Ваши статьи:</h2>
+                <div class="articles-info-header">
+                    <h2>Ваши статьи:</h2>
+                </div>
                 <ul class="articles-list">
-                    <li>Статья 1</li>
-                    <li>Статья 2</li>
-                    <li>Статья 3</li>
+                    {% for article in news %}
+                        {% if article.author == user %}
+                            <li><a href="{% url 'news-detail' article.id %}">{{ article.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>
 
         <div class="articles-info">
             <div class="profile-info">
-                <h2>понравившиеся статьи:</h2>
+                <div class="articles-info-header">
+                    <h2>понравившиеся статьи:</h2>
+                </div>
                 <ul class="articles-list">
-                    <li>Статья A</li>
-                    <li>Статья B</li>
-                    <li>Статья C</li>
+                    {% for like in like_news %}
+                        {% if like.user == user %}
+                            <li><a href="{% url 'news-detail' like.article.id %}">{{ like.article.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>

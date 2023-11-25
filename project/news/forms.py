@@ -1,5 +1,6 @@
-from .models import Articles
+from .models import Articles, Like
 from django.forms import ModelForm, TextInput, DateTimeInput, Textarea, HiddenInput
+from django import forms
 
 
 class ArticlesForm(ModelForm):
@@ -25,3 +26,8 @@ class ArticlesForm(ModelForm):
                 'placeholder': 'Текст статьи'
             }),
         }
+
+class LikeForm(forms.ModelForm):
+    class Meta:
+        model = Like
+        fields = []

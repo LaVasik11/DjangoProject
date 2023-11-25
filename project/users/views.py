@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, login
 from django.views import View
 from django.shortcuts import render, redirect
 from users.forms import UserCreationForm
-
+from news.models import Articles
+from news.models import Like
 
 class Register(View):
 
@@ -32,4 +33,7 @@ class Register(View):
 
 
 def profile_user(request, username):
-    return render(request, 'users/profile_user.html')
+    news = Articles.objects.all()
+    like_news = Like.objects.all()
+    return render(request, 'users/profile_user.html', {'news': news,
+                                                       'like_news': like_news})

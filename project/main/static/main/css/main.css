@@ -70,7 +70,7 @@ main .features p {max-width: 400px; margin: 20px auto}
 }
 
 
-form {
+.form-block {
     margin-left: 32%;
     width: 500px;
     margin-top: 50px;
@@ -200,4 +200,24 @@ confirm_deletion {
 
 .profile-link:hover {
     color: #ff6600;
+}
+
+.red-button {
+  margin-top: 2px;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.red-button:hover {
+  background-color: #cc0000;
+}
+
+.features button:last-child {
+  margin-top: 2px;
 }

@@ -23,6 +23,9 @@ body {
     margin: 0;
     overflow-y: auto;
     max-height: 200px;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
 }
 .articles-container {
     display: flex;
@@ -30,19 +33,17 @@ body {
     width: 100%;
 }
 .articles-info {
-    width: 400px;
-    margin-right: 20px;
-    margin-left: 20px;
+    max-width: 400px;
+    width: 100%;
     border: 2px solid #333;
     padding: 10px;
     background-color: #fff;
     overflow-y: auto;
-    max-height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     border-radius: 10px;
+    margin: 0 10px;
 }
 .button-container {
     position: absolute;
@@ -57,4 +58,24 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+.articles-list li {
+    background-color: #fff;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.articles-list a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+.articles-list a:hover {
+    text-decoration: underline;
+}
+.articles-info-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
 }

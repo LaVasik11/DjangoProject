@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import Articles
+from .models import Articles, Like
 from .forms import ArticlesForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
+from .forms import LikeForm
 
 def news_home(request):
     news = Articles.objects.order_by('-date')
@@ -59,3 +60,28 @@ def create(request):
     }
 
     return render(request, 'news/create.html', data)
+
+
+def article_detail(request, article_id):
+    article = get_object_or_404(Articles, id=article_id)
+    liked = False
+    like_form = LikeForm()
+
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            like_form = LikeForm(request.POST)
+            if like_form.is_valid():
+                like, created = Like.objects.get_or_create(user=request.user, article=article)
+                if not created:
+                    like.delete()
+
+
+                return redirect('news-detail', article_id=article.id)
+
+        liked = Like.objects.filter(user=request.user, article=article).exists()
+
+    return render(request, 'news/details_view.html', {'article': article, 'liked': liked, 'like_form': like_form})
+
+
+
+
