@@ -7,10 +7,13 @@
         <h1 style="margin-left: 50px;">Новости на сайте</h1>
         {% if news %}
             {% for el in news %}
-                <div class="alert alert-warning ">
+                <div class="alert alert-warning">
                     <h3>{{ el.title }}</h3>
                     <p>{{ el.anons }}</p>
                     <a href="{% url 'news-detail' el.id %}" class="btn btn-warning">Читать</a>
+                    <span class="author-link">
+                        Автор: <a href="{% url 'profile' el.author %}">{{ el.author }}</a>
+                    </span>
                 </div>
             {% endfor %}
         {% else %}

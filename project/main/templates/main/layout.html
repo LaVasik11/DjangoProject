@@ -14,12 +14,20 @@
 
 </head>
 <body>
+
+
     <div class="sidebar-container">
+
+
         <aside>
             {% if user.is_authenticated %}
+                <div class="button-container">
+                    <button class="button-beck" onclick="goBack()">Назад</button>
+                </div><br>
+
                 <a href="{% url 'profile' user.username %}" class="profile-link">
-    <p class="nickname"><b>{{ user }}</b></p>
-</a>
+                    <p class="nickname"><b>{{ user }}</b></p>
+                </a>
             {% else %}
                 <p>Вы не зарегистрированы</p>
             {% endif %}
@@ -51,5 +59,10 @@
         </div>
     </main>
 
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>

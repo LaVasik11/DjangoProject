@@ -4,27 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профиль {{ user }}</title>
+    <title>Профиль {{ username }}</title>
     <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
 </head>
 <body>
 
 <div class="profile-container">
     <div class="button-container">
-        <button class="button" onclick="goBack()">Назад</button>
+        <button class="button-beck" onclick="goBack()">Назад</button>
     </div>
 
-    <h1>{{ user }}</h1>
+    <h1>{{ username }}</h1>
 
     <div class="articles-container">
         <div class="articles-info">
             <div class="profile-info">
                 <div class="articles-info-header">
+                {% if user.username == username %}
                     <h2>Ваши статьи:</h2>
+                {% else %}
+                    <h2>Стати пользовотеля:</h2>
+                {% endif %}
                 </div>
                 <ul class="articles-list">
                     {% for article in news %}
-                        {% if article.author == user %}
+                        {% if article.author.username == username %}
                             <li><a href="{% url 'news-detail' article.id %}">{{ article.title }}</a></li>
                         {% endif %}
                     {% endfor %}
@@ -32,20 +36,22 @@
             </div>
         </div>
 
-        <div class="articles-info">
-            <div class="profile-info">
-                <div class="articles-info-header">
-                    <h2>понравившиеся статьи:</h2>
+        {% if user.username == username %}
+            <div class="articles-info">
+                <div class="profile-info">
+                    <div class="articles-info-header">
+                        <h2>понравившиеся статьи:</h2>
+                    </div>
+                    <ul class="articles-list">
+                        {% for like in like_news %}
+                            {% if like.user.username == username %}
+                                <li><a href="{% url 'news-detail' like.article.id %}">{{ like.article.title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
-                <ul class="articles-list">
-                    {% for like in like_news %}
-                        {% if like.user == user %}
-                            <li><a href="{% url 'news-detail' like.article.id %}">{{ like.article.title }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
             </div>
-        </div>
+        {% endif %}
     </div>
 </div>
 

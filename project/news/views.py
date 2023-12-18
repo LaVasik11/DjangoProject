@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from .forms import LikeForm
 
+
 def news_home(request):
     news = Articles.objects.order_by('-date')
     return render(request, 'news/news_home.html', {'news': news})
@@ -23,12 +24,10 @@ class NewsUpdateView(UpdateView):
     form_class = ArticlesForm
 
 
-
 class NewsDeleteView(DeleteView):
     model = Articles
     success_url = '/news/'
     template_name = 'news/news-delete.html'
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

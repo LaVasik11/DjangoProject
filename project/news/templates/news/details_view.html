@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="features">
-        <p>Автор: {{ article.author }}</p>
+        <p>Автор: <a href="{% url 'profile' article.author %}">{{ article.author }}</a></p>
         <h1>{{ article.title }}</h1>
         <p>{{ article.date }}</p>
         <p>{{ article.full_text }}</p>
@@ -25,6 +25,7 @@
                     {% endif %}
                 </button>
             </form>
+
         {% endif %}
     </div>
 {% endblock %}

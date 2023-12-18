@@ -187,19 +187,21 @@ confirm_deletion {
 }
 
 .profile-link {
-    text-decoration: none;
+    text-decoration: none !important;
     color: #4285f4;
+    font-size: 26px;
 }
 
 
 .profile-link p.nickname b {
     font-weight: bold;
-    color: #ff6600;
+    color: #1976c2;
 }
 
 
 .profile-link:hover {
-    color: #ff6600;
+    color: #1976c2;
+    text-decoration: none !important;
 }
 
 .red-button {
@@ -220,4 +222,27 @@ confirm_deletion {
 
 .features button:last-child {
   margin-top: 2px;
+}
+
+.button-beck {
+    width: 60px;
+    height: 30px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+
+
+
+.alert-warning .author-link {
+    margin-left: 180px;
 }

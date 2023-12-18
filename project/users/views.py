@@ -36,4 +36,5 @@ def profile_user(request, username):
     news = Articles.objects.all()
     like_news = Like.objects.all()
     return render(request, 'users/profile_user.html', {'news': news,
-                                                       'like_news': like_news})
+                                                       'like_news': like_news,
+                                                       'username': username})
